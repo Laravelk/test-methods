@@ -45,6 +45,12 @@ public class CustomerManager extends ParentManager {
         // Лабораторная 2: добавить код который бы проверял, что нет customer'а c таким же login (email'ом).
         // Попробовать добавить другие ограничения, посмотреть как быстро растет кодовая база тестов.
 
+        if (dbService.getCustomerByLogin(customer.login) != null) {
+            throw new IllegalArgumentException("Same email.");
+        }
+
+        // DONE
+
         return dbService.createCustomer(customer);
     }
 
@@ -78,6 +84,7 @@ public class CustomerManager extends ParentManager {
         // Лабораторная 2: обратите внимание что вернули данных больше чем надо...
         // т.е. getCustomerByLogin честно возвратит все что есть в базе данных по этому customer'у.
         // необходимо написать такой unit тест, который бы отлавливал данное поведение.
+
         return dbService.getCustomerByLogin(authenticatedUserDetails.getName());
     }
 
@@ -89,6 +96,10 @@ public class CustomerManager extends ParentManager {
      * Метод добавляет к текущему баласу переданное значение, которое должно быть строго больше нуля.
      */
     public CustomerPojo topUpBalance(TopUpBalancePojo topUpBalancePojo) {
+        if (topUpBalancePojo.money < 0) {
+            throw new IllegalArgumentException("Top downed");
+        }
+
         CustomerPojo customerPojo = dbService.getCustomer(topUpBalancePojo.customerId);
 
         customerPojo.balance += topUpBalancePojo.money;

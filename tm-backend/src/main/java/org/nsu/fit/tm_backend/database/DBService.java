@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class DBService implements IDBService{
+public class DBService implements IDBService {
     // Constants
     private static final String INSERT_CUSTOMER = "INSERT INTO CUSTOMER(id, first_name, last_name, login, pass, balance) values ('%s', '%s', '%s', '%s', '%s', %s)";
     private static final String UPDATE_CUSTOMER = "UPDATE CUSTOMER SET balance=%s WHERE id='%s'";
@@ -111,7 +111,7 @@ public class DBService implements IDBService{
     }
 
     @Override
-    public void deleteCustomer(UUID id) {
+    public void deleteCustomer(UUID id) throws RuntimeException {
         synchronized (generalMutex) {
             logger.debug(String.format("Method 'removeCustomer' was called with data: \n%s", id));
 
@@ -355,9 +355,9 @@ public class DBService implements IDBService{
             throw new RuntimeException(ex);
         }
 
-        String connStr = "jdbc:mysql://localhost:3306/testmethods?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
+        // String connStr = "jdbc:mysql://localhost:3306/testmethods?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
         // Note: uncomment below line if you want to use the docker compose.
-        //connStr = "jdbc:mysql://mysql_db_container:3306/testmethods?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
+        String connStr = "jdbc:mysql://mysql_db_container:3306/testmethods?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false";
         String user = "user";
         String pass = "pass";
         logger.debug("MySQL JDBC Driver Registered.");
