@@ -21,7 +21,19 @@ public class PlanManager extends ParentManager {
      * fee - больше либо равно 0 но меньше либо равно 5000.
      */
     public PlanPojo createPlan(PlanPojo plan) {
-        return dbService.createPlan(plan);
+        if (plan.name.length() < 2 | plan.name.length() > 128) {
+            throw new IllegalArgumentException("Name is too long.");
+        }
+
+        if (plan.details.length() < 1 | plan.details.length() > 1024) {
+            throw new IllegalArgumentException("Details is too long.");
+        }
+
+        if (plan.fee < 0 | plan.fee > 5000) {
+            throw new IllegalArgumentException("Fee is too big.");
+        }
+
+            return dbService.createPlan(plan);
     }
 
     public void deletePlan(UUID id) {

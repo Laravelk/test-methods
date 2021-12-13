@@ -11,28 +11,28 @@ import org.nsu.fit.services.browser.Browser;
 import org.nsu.fit.services.browser.BrowserService;
 
 public class CreateCustomerTest {
-    private Browser browser = null;
+    private Browser browser;
 
-    @BeforeClass
-    public void beforeClass() {
-        browser = BrowserService.openNewBrowser();
-    }
-
-    @Test(description = "Create customer via UI.")
-    @Severity(SeverityLevel.BLOCKER)
-    @Feature("Create customer feature")
-    public void createCustomer() {
-        new LoginScreen(browser)
-                .loginAsAdmin()
-                .createCustomer()
-                .fillEmail("john_wick@example.com")
-                .fillPassword("Baba_Jaga")
-                .fillFirstName("John")
-                .fillLastName("Wick");
-
-        // Лабораторная 4: Проверить что customer создан с ранее переданными полями.
-        // Решить проблему с генерацией случайных данных.
-    }
+//    @BeforeClass
+//    public void beforeClass() {
+//        browser = BrowserService.openNewBrowser();
+//    }
+//
+//    @Test(description = "Create customer via UI.")
+//    @Severity(SeverityLevel.BLOCKER)
+//    @Feature("Create customer feature")
+//    public void createCustomer() {
+//        new LoginScreen(browser)
+//                .loginAsAdmin()
+//                .createCustomer()
+//                .fillEmail("john_wick@example.com")
+//                .fillPassword("Baba_Jaga")
+//                .fillFirstName("John")
+//                .fillLastName("Wick");
+//
+//        // Лабораторная 4: Проверить что customer создан с ранее переданными полями.
+//        // Решить проблему с генерацией случайных данных.
+//    }
 
     @AfterClass
     public void afterClass() {

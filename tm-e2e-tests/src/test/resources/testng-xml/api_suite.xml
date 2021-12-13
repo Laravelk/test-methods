@@ -1,8 +1,18 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite verbose="1" name="API Tests" annotations="JDK" parallel="tests">
+<suite verbose="1" name="API Tests" annotations="JDK" parallel="tests" thread-count="4">
     <test name="AuthTest">
         <classes>
             <class name="org.nsu.fit.tests.api.AuthTest" />
+            <class name="org.nsu.fit.tests.api.BadCustomerFirstName" />
+            <class name="org.nsu.fit.tests.api.BadCustomerLastName" />
+            <class name="org.nsu.fit.tests.api.BadCustomerPassword" />
+            <class name="org.nsu.fit.tests.api.BadPlanDetails" />
+            <class name="org.nsu.fit.tests.api.BadPlanFee" />
+            <class name="org.nsu.fit.tests.api.BadPlanName" />
+            <class name="org.nsu.fit.tests.api.BadSubscription" />
+            <class name="org.nsu.fit.tests.api.CustomerTest" />
+            <class name="org.nsu.fit.tests.api.PlanTest" />
+            <class name="org.nsu.fit.tests.api.Subscription" />
         </classes>
     </test>
 </suite>

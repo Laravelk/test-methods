@@ -47,11 +47,12 @@ compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.20'
     compile group:'log4j', name: 'log4j', version: '1.2.17'
 
     compile group:'org.glassfish.jersey.core', name: 'jersey-client', version: '2.19'
     compile group:'org.glassfish.jersey.media', name: 'jersey-media-json-jackson', version: '2.19'
-
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
     compile group:'io.qameta.allure', name: 'allure-testng', version: allureVersion
     compile group:'org.testng', name: 'testng', version: testngVersion
 

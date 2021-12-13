@@ -21,6 +21,13 @@ public class SubscriptionManager extends ParentManager {
      * 2. Стоймость подписки не превышает текущего баланса кастомера и после покупки вычитается из его баласа.
      */
     public SubscriptionPojo createSubscription(SubscriptionPojo subscriptionPojo) {
+
+        System.out.println("print1");
+
+        if (subscriptionPojo.balance < subscriptionPojo.planFee) {
+            throw new IllegalArgumentException("U are bomz");
+        }
+
         return dbService.createSubscription(subscriptionPojo);
     }
 

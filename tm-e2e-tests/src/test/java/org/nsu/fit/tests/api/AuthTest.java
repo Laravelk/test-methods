@@ -17,6 +17,7 @@ public class AuthTest {
     @Feature("Authentication feature.")
     public void authAsAdminTest() {
         adminToken = new RestClient().authenticate("admin", "setup");
+        String b = "";
     }
 
     @Test(description = "Authenticate as admin.", dependsOnMethods = "authAsAdminTest")

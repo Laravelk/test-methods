@@ -119,11 +119,14 @@ public class RestService {
     public Response createCustomer(CustomerPojo customerData) {
         try {
             // create new customer
+            System.out.println("endpoint1");
             CustomerPojo customer = MainFactory.getInstance().getCustomerManager().createCustomer(customerData);
+            System.out.println("endpoint2");
 
             // send the answer
             return Response.ok().entity(JsonMapper.toJson(customer, true)).build();
         } catch (IllegalArgumentException ex) {
+            System.out.println("endpoint3" + ex);
             return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage() + "\n" + ExceptionUtils.getFullStackTrace(ex)).build();
         }
     }

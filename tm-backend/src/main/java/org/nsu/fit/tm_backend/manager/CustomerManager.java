@@ -30,6 +30,14 @@ public class CustomerManager extends ParentManager {
             throw new IllegalArgumentException("Argument 'customer' is null.");
         }
 
+        if (Character.isLowerCase(customer.firstName.charAt(0))) {
+            throw new IllegalArgumentException("First name char is low");
+        }
+
+        if (Character.isLowerCase(customer.lastName.charAt(0))) {
+            throw new IllegalArgumentException("First name char is low");
+        }
+
         if (customer.pass == null) {
             throw new IllegalArgumentException("Field 'customer.pass' is null.");
         }
@@ -41,15 +49,6 @@ public class CustomerManager extends ParentManager {
         if (customer.pass.equalsIgnoreCase("123qwe")) {
             throw new IllegalArgumentException("Password is very easy.");
         }
-
-        // Лабораторная 2: добавить код который бы проверял, что нет customer'а c таким же login (email'ом).
-        // Попробовать добавить другие ограничения, посмотреть как быстро растет кодовая база тестов.
-
-        if (dbService.getCustomerByLogin(customer.login) != null) {
-            throw new IllegalArgumentException("Same email.");
-        }
-
-        // DONE
 
         return dbService.createCustomer(customer);
     }
